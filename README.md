@@ -1,2 +1,2 @@
 # config_stuff
-`cd config_stuff && chmod +x setup.sh && ./setup.sh`
+chmod +x setup.sh && source ./setup.sh
