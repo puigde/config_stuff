@@ -9,3 +9,4 @@ vim.opt.autowrite = true
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.wo.relativenumber = true
+vim.keymap.set({'n', 'v'}, '<leader>y', [["+y]])
