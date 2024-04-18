@@ -10,3 +10,5 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.wo.relativenumber = true
 vim.keymap.set({'n', 'v'}, '<leader>y', [["+y]])
+vim.keymap.set("n", "<leader>od", ":ObsidianTemplate daily<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
+vim.opt.conceallevel = 1

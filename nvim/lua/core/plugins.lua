@@ -24,6 +24,11 @@ return require('packer').startup(function(use)
   use "github/copilot.vim"
   use "folke/tokyonight.nvim"
   use "mg979/vim-visual-multi"
+  use {
+    "epwalsh/obsidian.nvim",
+    tag = "*",
+    requires = { {"nvim-lua/plenary.nvim"} }
+  }
   -- My plugins here
   -- use 'foo1/bar1.nvim'
   -- use 'foo2/bar2.nvim'
