@@ -32,7 +32,7 @@ om() {
         nvim "$(date +%Y-%m-%d).md"
     else
         oo || return 1
-        cd "Learns/Projects/$1" || { echo "Error: Unable to navigate to project directory."; return 1; }
+        cd "Learns/Projects/Active/$1" || { echo "Error: Unable to navigate to project directory."; return 1; }
         if [ ! -d "meetings" ]; then
             mkdir "meetings" || { echo "Error: Unable to create meetings directory."; return 1; }
         fi
