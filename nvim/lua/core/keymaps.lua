@@ -13,4 +13,7 @@ vim.keymap.set({'n', 'v'}, '<leader>y', [["+y]])
 vim.keymap.set("n", "<leader>od", ":ObsidianTemplate daily<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
 vim.keymap.set("n", "<leader>om", ":ObsidianTemplate meeting<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
 vim.keymap.set("n", "<leader>ow", ":ObsidianTemplate writing<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
+vim.keymap.set("n", "<leader>op", ":ObsidianTemplate paperdoc<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
+vim.keymap.set("n", "<leader>on", ":ObsidianTemplate papernote<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
+vim.keymap.set("n", "<leader>omoc", ":ObsidianTemplate moc<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
 vim.opt.conceallevel = 1

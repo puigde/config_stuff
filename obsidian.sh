@@ -47,3 +47,9 @@ ow() {
     cd "../Learns/Writes" || { echo "Error: Unable to navigate to meetings directory."; return 1; }
     nvim "$(date +%Y-%m-%d).md"
 }
+
+oa() {
+    oo || return 1
+    cd "Learns/Reads/Academic" || { echo "Error unable to navigate to project directory."; return 1;}
+}
+
