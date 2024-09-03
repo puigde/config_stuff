@@ -21,9 +21,9 @@ return require('packer').startup(function(use)
       tag = '0.1.4',
       requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use "github/copilot.vim"
   use "folke/tokyonight.nvim"
   use "mg979/vim-visual-multi"
+  use "hrsh7th/nvim-cmp"
   use {
     "epwalsh/obsidian.nvim",
     tag = "*",
