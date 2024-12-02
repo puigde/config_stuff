@@ -1,5 +1,3 @@
-#!/bin/bash
-
 setup_rc_file() {
     local rc_file
     local bash_files=("$@")
@@ -41,3 +39,27 @@ setup_rc_file() {
     echo "Setup complete. Updated $rc_file."
 }
 
+source_rc_file() {
+    local rc_file
+
+    case "$OSTYPE" in
+        *"darwin"*)
+            rc_file="$HOME/.zshrc"
+            ;;
+        "linux-gnu"*)
+            rc_file="$HOME/.bashrc"
+            ;;
+        *)
+            echo "Unsupported operating system." >&2
+            exit 1
+            ;;
+    esac
+
+    if [ -f "$rc_file" ]; then
+        source "$rc_file"
+        echo "Sourced $rc_file."
+    else
+        echo "Error: $rc_file not found."
+        exit 1
+    fi
+}
