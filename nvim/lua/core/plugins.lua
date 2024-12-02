@@ -14,8 +14,6 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
   use 'evanleck/vim-svelte'
   use 'wbthomason/packer.nvim'
-  use 'nvim-tree/nvim-tree.lua'
-  use 'nvim-tree/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   use {
       'nvim-telescope/telescope.nvim',
@@ -28,14 +26,9 @@ return require('packer').startup(function(use)
   use {
     "epwalsh/obsidian.nvim",
     tag = "*",
-    requires = { {"nvim-lua/plenary.nvim"} }
-  }
-  -- My plugins here
-  -- use 'foo1/bar1.nvim'
-  -- use 'foo2/bar2.nvim'
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
+    requires = { {"nvim-lua/plenary.nvim"} },
+    cond = vim.loop.os_uname().sysname == "Darwin"
+}
   if packer_bootstrap then
     require('packer').sync()
   end
