@@ -34,5 +34,5 @@ EOF
     local tmux_config_file="$HOME/.tmux.conf"
 
     echo "$tmux_config_content" > "$tmux_config_file"
-    echo "Updated tmux configuration in $tmux_config_file"
+    echo "Updated tmux configuration in $tmux_config_file changes will be active on fresh tmux server"
 }
