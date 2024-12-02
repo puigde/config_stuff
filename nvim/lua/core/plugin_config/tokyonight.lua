@@ -2,7 +2,7 @@
 local function set_tokyonight_style()
     local hour = tonumber(os.date("%H"))
     
-    if hour >= 19 or hour < 5 then
+    if hour >= 16 then
         -- After 8 PM or before 6 AM, use the night style
         require('tokyonight').setup({
             style = "night",

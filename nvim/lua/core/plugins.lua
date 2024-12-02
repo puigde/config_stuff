@@ -13,7 +13,6 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  use 'nvim-tree/nvim-tree.lua'
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   use {
@@ -24,11 +23,6 @@ return require('packer').startup(function(use)
   use "folke/tokyonight.nvim"
   use "mg979/vim-visual-multi"
   use "hrsh7th/nvim-cmp"
-  use {
-    "epwalsh/obsidian.nvim",
-    tag = "*",
-    requires = { {"nvim-lua/plenary.nvim"} }
-  }
   -- My plugins here
   -- use 'foo1/bar1.nvim'
   -- use 'foo2/bar2.nvim'
