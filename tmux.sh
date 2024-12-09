@@ -21,18 +21,8 @@ tk() {
 }
 
 update_tmux_config() {
-    local tmux_config_content
-    tmux_config_content=$(cat <<EOF
-set-option -sg escape-time 10
-set-option -g focus-events on
-set -g prefix \`
-unbind C-b
-bind \` send-prefix
-EOF
-    )
-
     local tmux_config_file="$HOME/.tmux.conf"
-
-    echo "$tmux_config_content" > "$tmux_config_file"
+    cp "tmuxconf" "$tmux_config_file"
     echo "Updated tmux configuration in $tmux_config_file changes will be active on fresh tmux server"
 }
+
