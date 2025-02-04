@@ -52,6 +52,9 @@ vim.keymap.set("n", "<leader>or", ":ObsidianTemplate review<cr> :lua vim.cmd([[1
 vim.keymap.set("n", "<leader>ps", ":ObsidianTemplate projectsummary<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
 vim.opt.conceallevel = 1
 
+-- Common variables
+local obsidian_vault_path = "/Users/polpuigdemont/Documents/Obsidian Vault/"
+
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
@@ -95,6 +98,15 @@ require("lazy").setup({
 					end,
 					desc = "Live Grep",
 				},
+				{
+					"<leader>og",
+					function()
+						require("telescope.builtin").live_grep({
+							search_dirs = { obsidian_vault_path },
+						})
+					end,
+					desc = "Grep Obsidian",
+				},
 			},
 			opts = {
 				defaults = {
@@ -115,7 +127,7 @@ require("lazy").setup({
 				workspaces = {
 					{
 						name = "puigde", -- Name of the workspace
-						path = "/Users/polpuigdemont/Documents/Obsidian Vault/", -- Path to your Obsidian Vault
+						path = obsidian_vault_path, -- Path to your Obsidian Vault
 					},
 				},
 				notes_subdir = "cache",
