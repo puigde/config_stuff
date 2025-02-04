@@ -8,7 +8,7 @@ ta() {
     if [ -z "$1"]; then
         tmux new-session 
     else
-        tmux new-session -t $1
+        tmux attach-session -t $1
     fi
 }
 
