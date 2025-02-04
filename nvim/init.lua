@@ -17,18 +17,17 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Set the background dynamically based on Ghostty config
 local function get_ghostty_background()
-  local output = vim.fn.system("ghostty +show-config")
-  for line in output:gmatch("[^\r\n]+") do
-    if line:find("background") then
-      local bg = line:match("background = #(.-)$")
-      return bg
-    end
-  end
-  return "ffffff"  -- Default color if not found
+	local output = vim.fn.system("ghostty +show-config")
+	for line in output:gmatch("[^\r\n]+") do
+		if line:find("background") then
+			local bg = line:match("background = #(.-)$")
+			return bg
+		end
+	end
+	return "ffffff" -- Default color if not found
 end
 local ghostty_background = get_ghostty_background()
 vim.o.background = ghostty_background == "ffffff" and "light" or "dark"
-
 
 -- General keymaps and opt
 vim.g.mapleader = " "
@@ -128,7 +127,7 @@ require("lazy").setup({
 					time_format = "%H:%M:%S",
 				},
 				completion = {
-					nvim_cmp = false, -- Enable nvim-cmp completion
+					nvim_cmp = true, -- Enable nvim-cmp completion
 					min_chars = 2, -- Trigger completion after 2 characters
 				},
 				mappings = {
@@ -141,6 +140,10 @@ require("lazy").setup({
 					},
 				},
 			},
+		},
+		-- * Nvim-cmp (required for Obsidian)
+		{
+			"hrsh7th/nvim-cmp",
 		},
 		-- * Lualine
 		{
