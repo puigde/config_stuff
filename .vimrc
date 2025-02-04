@@ -1,14 +1,14 @@
-inoremap <silent> jj <Esc>
+let mapleader = " "
+let maplocalleader = " "
+inoremap jj <Esc>
 set tabstop=4
-set expandtab
 set shiftwidth=4
+set expandtab
 set shiftround
 set showcmd
 set autoread
 set autowrite
-let mapleader = " "
-let maplocalleader = " "
+set conceallevel=1
 set relativenumber
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
-set conceallevel=1
