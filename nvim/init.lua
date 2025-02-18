@@ -53,7 +53,7 @@ vim.keymap.set("n", "<leader>ps", ":ObsidianTemplate projectsummary<cr> :lua vim
 vim.opt.conceallevel = 1
 
 -- Common variables
-local obsidian_vault_path = "/Users/polpuigdemont/Documents/Obsidian Vault/"
+local obsidian_vault_path = "/Users/polpuigdemont/Documents/obsfiles/Obsidian Vault/"
 
 -- Setup lazy.nvim
 require("lazy").setup({
