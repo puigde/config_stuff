@@ -33,6 +33,9 @@ vim.o.background = ghostty_background == "ffffff" and "light" or "dark"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = true, silent = true })
+-- Centered navigation with Ctrl+Up/Down
+vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
@@ -53,7 +56,7 @@ vim.keymap.set("n", "<leader>ps", ":ObsidianTemplate projectsummary<cr> :lua vim
 vim.opt.conceallevel = 1
 
 -- Common variables
-local obsidian_vault_path = "/Users/polpuigdemont/Documents/obsfiles/Obsidian Vault/"
+local obsidian_vault_path = vim.loop.os_homedir() .. "/Documents/obsfiles/Obsidian Vault/"
 
 -- Setup lazy.nvim
 require("lazy").setup({
