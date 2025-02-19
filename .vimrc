@@ -14,6 +14,7 @@ set conceallevel=1
 set relativenumber
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
-set ttimeoutlen=0
-set ttyfast
-set noesckeys
+
+" Basic key repeat settings
+set timeout
+set timeoutlen=1000
