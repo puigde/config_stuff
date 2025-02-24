@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define OBSIDIAN_PATH variable
-OBSIDIAN_PATH="/Users/polpuigdemont/Documents/Obsidian Vault/"
+OBSIDIAN_PATH="$HOME/Documents/obsfiles/Obsidian Vault/"
 
 oo() {
     cd "$OBSIDIAN_PATH" || { echo "Error: Unable to navigate to Obsidian Vault directory."; return 1; }
