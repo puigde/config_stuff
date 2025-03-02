@@ -1,5 +1,8 @@
 #!/bin/bash
 
-gpall() {
-    git add -A; git commit -m "updates"; git push origin main
+gpm() {
+    git add -A;
+    git commit -m "auto update";
+    git push origin main;
+    echo "updated to origin main";
 }
