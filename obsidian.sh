@@ -53,3 +53,41 @@ oa() {
     cd "Learns/Reads/Academic" || { echo "Error unable to navigate to project directory."; return 1;}
 }
 
+og() {
+    # Check if search term is provided
+    if [ -z "$1" ]; then
+        echo "Error: Please provide a search term."
+        echo "Usage: og <search_term> [subdirectory]"
+        return 1
+    fi
+
+    search_term="$1"
+    
+    # Start in the Obsidian vault root directory
+    current_dir=$(pwd)
+    oo || return 1
+    
+    # If subdirectory is specified, try to navigate to it
+    if [ -n "$2" ]; then
+        if [ -d "$2" ]; then
+            cd "$2" || { echo "Error: Unable to navigate to specified subdirectory."; cd "$current_dir"; return 1; }
+        else
+            echo "Warning: Subdirectory not found. Searching in root directory instead."
+        fi
+    fi
+    
+    echo "Searching for: '$search_term' in $(pwd)"
+    echo "----------------------------------------"
+    
+    # Perform recursive grep search with:
+    # -i: case insensitive
+    # -n: show line numbers
+    # -r: recursive
+    # --include="*.md": only search markdown files
+    # --color=always: highlight matches
+    grep -i -n -r --include="*.md" --color=always "$search_term" .
+    
+    # Return to original directory
+    cd "$current_dir"
+}
+
