@@ -8,9 +8,5 @@ gpm() {
 }
 
 function gds() {
-  local tmpfile
-  tmpfile=$(mktemp)
-  git ls-files > "$tmpfile"
-  tree --fromfile "$tmpfile"
-  rm "$tmpfile"
+  git ls-files > repo.txt
 }
