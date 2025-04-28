@@ -169,6 +169,13 @@ require("lazy").setup({
 				},
 			},
 		},
+		{
+			"rust-lang/rust.vim",
+			ft = { "rust" },
+			config = function()
+				vim.g.rustfmt_autosave = 1
+			end,
+		},
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
