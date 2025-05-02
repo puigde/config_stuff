@@ -36,6 +36,8 @@ vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = true, silent = true })
 -- Centered navigation with Ctrl+Up/Down
 vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<PageUp>", "<C-u>zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<PageDown>", "<C-d>zz", { noremap = true, silent = true })
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
