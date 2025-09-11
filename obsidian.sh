@@ -53,6 +53,11 @@ oa() {
     cd "Learns/Reads/Academic" || { echo "Error unable to navigate to project directory."; return 1;}
 }
 
+op() {
+    oo || return 1
+    cd "Learns/Projects/Active" || { echo "Error unable to navigate to project directory."; return 1;}
+}
+
 og() {
     # Check if search term is provided
     if [ -z "$1" ]; then
