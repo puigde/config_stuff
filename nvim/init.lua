@@ -27,7 +27,16 @@ local function get_ghostty_background()
 	return "ffffff" -- Default color if not found
 end
 local ghostty_background = get_ghostty_background()
-vim.o.background = ghostty_background == "ffffff" and "light" or "dark"
+local function is_dark_background(bg)
+	return bg == "000000"
+end
+vim.o.background = is_dark_background(ghostty_background) and "dark" or "light"
+
+-- Make background transparent to show terminal background
+vim.cmd([[
+	highlight Normal guibg=NONE ctermbg=NONE
+	highlight NonText guibg=NONE ctermbg=NONE
+]])
 
 -- General keymaps and opt
 vim.g.mapleader = " "
@@ -64,24 +73,6 @@ local obsidian_vault_path = vim.loop.os_homedir() .. "/Documents/obsfiles/Obsidi
 require("lazy").setup({
 	spec = {
 		-- PLUGINS
-		-- * Tokyonight
-		{
-			"folke/tokyonight.nvim",
-			lazy = false, -- make sure we load this during startup if it is your main colorscheme
-			priority = 1000, -- make sure to load this before all the other start plugins
-			config = function()
-				-- load the colorscheme here
-				require("tokyonight").setup({
-					style = "night", -- Set to "day" mode
-					transparent = true, -- Enable transparency
-					styles = {
-						sidebars = "transparent",
-						floats = "transparent",
-					},
-				})
-				vim.cmd([[colorscheme tokyonight]])
-			end,
-		},
 		-- * Telescope
 		{
 			"nvim-telescope/telescope.nvim",
