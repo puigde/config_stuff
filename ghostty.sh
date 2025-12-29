@@ -1,55 +1,39 @@
 #!/bin/bash
 
 changetheme() {
-    # Determine the Ghostty config path based on platform
     local CONFIG_PATH
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        # macOS path
         CONFIG_PATH="$HOME/Library/Application Support/com.mitchellh.ghostty/config"
     else
-        # Linux/XDG path
         CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/config"
     fi
-    
-    # Read current colors
-    local current_fg=$(grep "^foreground = " "$CONFIG_PATH" | cut -d'#' -f2)
-    local current_bg=$(grep "^background = " "$CONFIG_PATH" | cut -d'#' -f2)
-    
-    # If colors are not found, use defaults
-    if [ -z "$current_fg" ]; then 
-        echo "No foreground color found, using default: ffffff"
-        current_fg="ffffff"
-    fi
-    if [ -z "$current_bg" ]; then
-        echo "No background color found, using default: 000000" 
-        current_bg="000000"
-    fi
-    
-    # Create temporary file
+
+    local fg bg desc
+    case "$1" in
+        d) fg="ffffff"; bg="000000"; desc="dark mode (white on black)" ;;
+        w) fg="000000"; bg="ffffff"; desc="white mode (black on white)" ;;
+        c) fg="000000"; bg="F0EEE4"; desc="cream mode (black on cream)" ;;
+        *)
+            echo "Available themes:"
+            echo "  c - cream mode (black on cream)"
+            echo "  d - dark mode (white on black)"
+            echo "  w - white mode (black on white)"
+            return
+            ;;
+    esac
+
     local temp_file=$(mktemp)
-    
-    # Read the file line by line and swap colors
     while IFS= read -r line; do
         if [[ $line == foreground* ]]; then
-            echo "foreground = #$current_bg"
+            echo "foreground = #$fg"
         elif [[ $line == background* && ! $line == *opacity* ]]; then
-            echo "background = #$current_fg"
+            echo "background = #$bg"
         else
             echo "$line"
         fi
     done < "$CONFIG_PATH" > "$temp_file"
-    
-    # Move temporary file to config location
+
     mv "$temp_file" "$CONFIG_PATH"
-    
-    echo "Theme colors flipped successfully!"
-    echo "Foreground #$current_fg -> #$current_bg"
-    echo "Background #$current_bg -> #$current_fg"
-    
-    # Show reload instruction
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        echo -e "\nPress Cmd+Shift+, to reload config"
-    else
-        echo -e "\nPress Ctrl+Shift+, to reload config"
-    fi
+    echo "Applied theme '$1': $desc"
+    [[ "$OSTYPE" == "darwin"* ]] && echo "Press Cmd+Shift+, to reload" || echo "Press Ctrl+Shift+, to reload"
 } 
