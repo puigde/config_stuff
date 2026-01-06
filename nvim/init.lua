@@ -66,6 +66,15 @@ vim.keymap.set("n", "<leader>or", ":ObsidianTemplate review<cr> :lua vim.cmd([[1
 vim.keymap.set("n", "<leader>ps", ":ObsidianTemplate projectsummary<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
 vim.opt.conceallevel = 1
 
+-- Disable legacy markdown syntax to let Treesitter handle it
+vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
+	pattern = "markdown",
+	callback = function()
+		vim.cmd("syntax off")
+		vim.treesitter.start()
+	end,
+})
+
 -- Common variables
 local obsidian_vault_path = vim.loop.os_homedir() .. "/Documents/obsfiles/Obsidian Vault/"
 
@@ -168,6 +177,15 @@ require("lazy").setup({
 			config = function()
 				vim.g.rustfmt_autosave = 1
 			end,
+		},
+		-- * Treesitter (for proper markdown math highlighting)
+		{
+			"nvim-treesitter/nvim-treesitter",
+			build = ":TSUpdate",
+			opts = {
+				ensure_installed = { "markdown", "markdown_inline", "latex", "python", "ruby", "rust", "cpp", "c", "lua", "bash", "json", "yaml" },
+				highlight = { enable = true },
+			},
 		},
 	},
 	-- Configure any other settings here. See the documentation for more details.
