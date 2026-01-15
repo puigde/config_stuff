@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source ./utils.sh
-FILES=("tmux.sh" "obsidian.sh" "ghostty.sh" "git.sh" "prompt.sh")
+FILES=("tmux.sh" "obsidian.sh" "git.sh")
 setup_rc_file "${FILES[@]}"
 
 # Source the rc file and update tmux config in the appropriate shell
